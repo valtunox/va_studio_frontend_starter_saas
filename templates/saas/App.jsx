@@ -3,7 +3,7 @@ import {
   Menu, X, Sparkles, Code2, Users, Rocket, BarChart3, Shield, Globe,
   Zap, ArrowRight, Play, Check, Star, ChevronRight, Github, Twitter,
   Linkedin, Mail, Lock, Cloud, Cpu, Eye, MonitorSmartphone, Layers,
-  Clock, Award, Heart, ExternalLink
+  Clock, Award, Heart, ExternalLink, MapPin, Phone, MessageSquare, Send
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -15,7 +15,48 @@ import { Badge } from '@/components/ui/badge'
 /*  DATA                                                               */
 /* ------------------------------------------------------------------ */
 
-const navLinks = ['Features', 'Pricing', 'Integrations', 'Docs']
+const navLinks = [
+  { label: 'Features', href: '#features' },
+  { label: 'Pricing', href: '#pricing' },
+  { label: 'Integrations', href: '#' },
+  { label: 'Docs', href: '#' },
+  { label: 'Contact', href: '#contact' },
+]
+
+const contactChannels = [
+  {
+    icon: Mail,
+    title: 'Email us',
+    description: 'We reply within one business day.',
+    value: 'hello@novaplatform.io',
+    href: 'mailto:hello@novaplatform.io',
+    gradient: 'from-purple-500 to-indigo-500',
+  },
+  {
+    icon: Phone,
+    title: 'Call sales',
+    description: 'Mon–Fri, 9am to 6pm PT.',
+    value: '+1 (415) 555-0134',
+    href: 'tel:+14155550134',
+    gradient: 'from-indigo-500 to-blue-500',
+  },
+  {
+    icon: MessageSquare,
+    title: 'Live chat',
+    description: 'Talk to a human in seconds.',
+    value: 'Start a conversation',
+    href: '#',
+    gradient: 'from-blue-500 to-cyan-500',
+  },
+  {
+    icon: MapPin,
+    title: 'Visit HQ',
+    description: 'By appointment only.',
+    value: '548 Market St, San Francisco, CA',
+    href: '#',
+    gradient: 'from-violet-500 to-fuchsia-500',
+  },
+]
 
 const stats = [
   { value: '10K+', label: 'Teams worldwide' },
@@ -189,8 +230,8 @@ export default function SaasLandingPage({ onNavigate }) {
 
           <nav className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
-              <a key={link} href="#" className="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-                {link}
+              <a key={link.label} href={link.href} className="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                {link.label}
               </a>
             ))}
           </nav>
@@ -210,8 +251,8 @@ export default function SaasLandingPage({ onNavigate }) {
         {mobileMenuOpen && (
           <div className="md:hidden border-t border-gray-200 dark:border-gray-800 bg-white/95 dark:bg-gray-950/95 backdrop-blur-xl px-4 py-4 space-y-3">
             {navLinks.map((link) => (
-              <a key={link} href="#" className="block text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white py-2">
-                {link}
+              <a key={link.label} href={link.href} onClick={() => setMobileMenuOpen(false)} className="block text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white py-2">
+                {link.label}
               </a>
             ))}
             <div className="flex gap-2 pt-2">
@@ -324,7 +365,7 @@ export default function SaasLandingPage({ onNavigate }) {
       </section>
 
       {/* ── FEATURES ───────────────────────────────────────────────── */}
-      <section className="py-20 sm:py-28">
+      <section id="features" className="py-20 sm:py-28 scroll-mt-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <Badge className="mb-4 bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800">Features</Badge>
@@ -429,7 +470,7 @@ export default function SaasLandingPage({ onNavigate }) {
       </section>
 
       {/* ── PRICING ────────────────────────────────────────────────── */}
-      <section className="py-20 sm:py-28">
+      <section id="pricing" className="py-20 sm:py-28 scroll-mt-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <Badge className="mb-4 bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800">Pricing</Badge>
@@ -544,6 +585,133 @@ export default function SaasLandingPage({ onNavigate }) {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CONTACT ────────────────────────────────────────────────── */}
+      <section id="contact" className="py-20 sm:py-28 relative overflow-hidden scroll-mt-20">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-20 right-0 w-80 h-80 bg-indigo-400/20 dark:bg-indigo-600/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 -left-20 w-72 h-72 bg-purple-400/20 dark:bg-purple-600/10 rounded-full blur-3xl" />
+        </div>
+
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <Badge className="mb-4 bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800">Contact</Badge>
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
+              Let&apos;s{' '}
+              <span className="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">build together</span>
+            </h2>
+            <p className="mt-4 text-gray-600 dark:text-gray-400 text-lg">
+              Questions about pricing, a custom plan, or a demo? Our team is ready to help.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-5 gap-8 items-start">
+            {/* Channels */}
+            <div className="lg:col-span-2 grid sm:grid-cols-2 lg:grid-cols-1 gap-4">
+              {contactChannels.map((channel) => (
+                <a
+                  key={channel.title}
+                  href={channel.href}
+                  className="group relative flex items-start gap-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5 hover:border-purple-300 dark:hover:border-purple-700 hover:shadow-lg hover:shadow-purple-500/5 transition-all"
+                >
+                  <div className={`flex-shrink-0 inline-flex p-2.5 rounded-lg bg-gradient-to-br ${channel.gradient}`}>
+                    <channel.icon className="h-5 w-5 text-white" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-sm font-semibold text-gray-900 dark:text-white">{channel.title}</div>
+                    <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{channel.description}</div>
+                    <div className="mt-2 text-sm font-medium text-purple-600 dark:text-purple-400 truncate">
+                      {channel.value}
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+
+            {/* Form */}
+            <Card className="lg:col-span-3 bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800 shadow-xl shadow-purple-500/5">
+              <CardContent className="p-6 sm:p-8">
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault()
+                    const data = new FormData(e.currentTarget)
+                    console.log('Contact form submit', Object.fromEntries(data))
+                    e.currentTarget.reset()
+                  }}
+                  className="space-y-5"
+                >
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="contact-name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+                        Full name
+                      </label>
+                      <Input id="contact-name" name="name" placeholder="Jane Doe" required />
+                    </div>
+                    <div>
+                      <label htmlFor="contact-email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+                        Work email
+                      </label>
+                      <Input id="contact-email" name="email" type="email" placeholder="jane@company.com" required />
+                    </div>
+                  </div>
+
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="contact-company" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+                        Company
+                      </label>
+                      <Input id="contact-company" name="company" placeholder="Acme Inc." />
+                    </div>
+                    <div>
+                      <label htmlFor="contact-topic" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+                        Topic
+                      </label>
+                      <select
+                        id="contact-topic"
+                        name="topic"
+                        defaultValue="sales"
+                        className="flex h-10 w-full rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-950 px-3 py-2 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      >
+                        <option value="sales">Talk to sales</option>
+                        <option value="support">Product support</option>
+                        <option value="partnership">Partnership</option>
+                        <option value="other">Something else</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="contact-message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+                      How can we help?
+                    </label>
+                    <textarea
+                      id="contact-message"
+                      name="message"
+                      rows={5}
+                      required
+                      placeholder="Tell us a bit about your team and what you're trying to do."
+                      className="flex w-full rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-950 px-3 py-2 text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-y"
+                    />
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-1">
+                    <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1.5">
+                      <Shield className="h-3.5 w-3.5" />
+                      We never share your details. See our privacy policy.
+                    </p>
+                    <Button
+                      type="submit"
+                      className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white border-0 shadow-lg shadow-purple-500/25 px-6"
+                    >
+                      Send message <Send className="ml-2 h-4 w-4" />
+                    </Button>
+                  </div>
+                </form>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
